@@ -54,7 +54,18 @@ async function deleteById(id) {
   return true;
 }
 
+async function deletall(){
+  const data = await readFileContent();
+
+  if (data.items == {}) {return false}
+
+  data.items = [];
+  saveFileContent(data);
+  console.log("All items deleted");
+}
+
 (async () => {
   const data = await readFileContent();
   console.log(data);
+  deletall()
 })();
