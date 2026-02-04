@@ -3,7 +3,7 @@ const path = require('path');
 
 const filePath = path.join(__dirname, 'data/data.json');
 
-function ensureFileExists() {
+async function ensureFileExists() {
   if (!fs.existsSync(filePath)) {
     fs.mkdirSync(path.dirname(filePath), { recursive: true });
     fs.writeFileSync(
@@ -14,17 +14,17 @@ function ensureFileExists() {
   }
 }
 
-function readFileContent() {
-  ensureFileExists();
+async function readFileContent() {
+  await ensureFileExists();
   return JSON.parse(fs.readFileSync(filePath, 'utf-8'));
 }
 
-function saveFileContent(data) {
+async function saveFileContent(data) {
   fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
 }
 
-function writeFileContent(value) {
-  const data = readFileContent();
+async function writeFileContent(value) {
+  const data = await readFileContent();
 
   const newItem = {
     id: ++data.lastId,
@@ -38,8 +38,8 @@ function writeFileContent(value) {
   return newItem.id;
 }
 
-function deleteById(id) {
-  const data = readFileContent();
+async function deleteById(id) {
+  const data = await readFileContent();
   const initialLength = data.items.length;
 
   data.items = data.items.filter(item => item.id !== id);
@@ -53,3 +53,8 @@ function deleteById(id) {
   console.log(`Item with id ${id} deleted`);
   return true;
 }
+
+(async () => {
+  const data = await readFileContent();
+  console.log(data);
+})();
