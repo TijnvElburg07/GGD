@@ -1,11 +1,124 @@
-<html lang="en">
+<!DOCTYPE html>
+<html lang="nl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <title>Document</title>
+    <title>Groen & Gewoon Doen - Tuinierservices</title>
 </head>
 <body>
-    <script src="js/main.js"></script>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1>Groen & Gewoon Doen</h1>
+            </div>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#packages" class="nav-link">Pakketten</a></li>
+                    <li><a href="#offer" class="nav-link">Offerte</a></li>
+                    <li><a href="#orders" class="nav-link">Mijn Orders</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Home Section -->
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h2>Jouw tuin in goede handen</h2>
+                    <p>Professionele tuinierservices voor een mooie en verzorgde tuin</p>
+                    <a href="#packages" class="btn btn-primary">Bekijk Pakketten</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Packages Section -->
+        <section id="packages" class="packages">
+            <div class="container">
+                <h2>Onze Pakketten</h2>
+                <p class="section-subtitle">Kies een standaard pakket of laat een offerte aanvragen</p>
+                <div id="packages-grid" class="packages-grid">
+                    <!-- Packages will be loaded here by JavaScript -->
+                    <div class="package-placeholder">
+                        <p>Pakketten laden...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Custom Offer Section -->
+        <section id="offer" class="offer">
+            <div class="container">
+                <h2>Offerte Aanvragen</h2>
+                <p class="section-subtitle">Beschrijf uw project en ontvang een gepersonaliseerde offerte</p>
+                
+                <div class="offer-container">
+                    <form id="offer-form" class="offer-form">
+                        <!-- Description -->
+                        <div class="form-group">
+                            <label for="description">Beschrijving van het werk</label>
+                            <textarea id="description" name="description" placeholder="Beschrijf wat u graag in uw tuin gedaan wilt hebben..." rows="5"></textarea>
+                        </div>
+
+                        <!-- Services Checkboxes -->
+                        <div class="form-group">
+                            <label>Diensten (selecteer een of meer)</label>
+                            <div class="services-list" id="services-list">
+                                <!-- Services will be loaded here by JavaScript -->
+                                <div class="service-item">
+                                    <input type="checkbox" id="service-placeholder" name="services" value="0" disabled>
+                                    <label for="service-placeholder">Diensten laden...</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Garden Size -->
+                        <div class="form-group">
+                            <label for="garden-size">Tuingrootte (m²)</label>
+                            <input type="number" id="garden-size" name="garden-size" min="1" placeholder="Voer tuingrootte in" value="">
+                        </div>
+
+                        <!-- Price Display -->
+                        <div class="price-display">
+                            <p>Geschatte prijs:</p>
+                            <p class="price-amount" id="estimated-price">€ 0,00</p>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn btn-primary btn-full">Offerte Aanvragen</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Orders Section -->
+        <section id="orders" class="orders">
+            <div class="container">
+                <h2>Mijn Orders</h2>
+                <p class="section-subtitle">Hier kunt u de status van uw bestellingen zien</p>
+                
+                <div id="orders-list" class="orders-list">
+                    <!-- Orders will be loaded here by JavaScript -->
+                    <div class="order-placeholder">
+                        <p>Geen bestellingen gevonden.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Groen & Gewoon Doen. Alle rechten voorbehouden.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
 </body>
 </html>
