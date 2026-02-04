@@ -1,0 +1,16 @@
+{
+  "name": "ggd-project",
+  "version": "1.0.0",
+  "description": "GGD Project",
+  "main": "js/script.js",
+  "scripts": {
+    "start": "node js/script.js",
+    "dev": "node js/script.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node.js": "^0.0.1-security"
+  }
+}
