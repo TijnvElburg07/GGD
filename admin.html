@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Admin Dashboard - Groen & Gewoon Doen</title>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1>Groen & Gewoon Doen</h1>
+                <span class="admin-badge">Admin Panel</span>
+            </div>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Terug naar Klanten</a></li>
+                    <li><a href="#orders" class="nav-link active">Bestellingen</a></li>
+                    <li><a href="#statistics" class="nav-link">Statistieken</a></li>
+                    <li><a href="#settings" class="nav-link">Instellingen</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Welcome Section -->
+        <section id="dashboard" class="dashboard-hero">
+            <div class="container">
+                <div class="dashboard-content">
+                    <h2>Admin Dashboard</h2>
+                    <p>Beheer alle bestellingen en offertes voor Groen & Gewoon Doen</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Orders Overview Section -->
+        <section id="orders" class="orders-admin">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Alle Bestellingen</h2>
+                    <div class="filter-controls">
+                        <button class="btn btn-filter active">Alle</button>
+                        <button class="btn btn-filter">In Behandeling</button>
+                        <button class="btn btn-filter">Goedgekeurd</button>
+                        <button class="btn btn-filter">Afgekeurd</button>
+                    </div>
+                </div>
+
+                <!-- Orders Table -->
+                <div class="orders-table-wrapper">
+                    <table class="orders-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Klant</th>
+                                <th>Beschrijving</th>
+                                <th>Prijs</th>
+                                <th>Datum</th>
+                                <th>Status</th>
+                                <th>Acties</th>
+                            </tr>
+                        </thead>
+                        <tbody id="orders-tbody">
+                            <!-- Orders data will be loaded here by backend -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Statistics Section -->
+        <section id="statistics" class="statistics">
+            <div class="container">
+                <h2>Statistieken</h2>
+
+                <div class="stats-grid" id="stats-grid">
+                    <!-- Statistics data will be loaded here by backend -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Recent Offers Section -->
+        <section id="offers" class="recent-offers">
+            <div class="container">
+                <h2>Recente Offertes</h2>
+                <p class="section-subtitle">Openstaande offertes die nog moeten worden behandeld</p>
+
+                <div class="offers-grid" id="offers-grid">
+                    <!-- Recent offers data will be loaded here by backend -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Settings Section -->
+        <section id="settings" class="admin-settings">
+            <div class="container">
+                <h2>Instellingen</h2>
+                
+                <div class="settings-container">
+                    <article class="settings-card">
+                        <h3>Prijsstelling</h3>
+                        <div class="setting-item">
+                            <label>Basisprijs per uur (€)</label>
+                            <input type="number" placeholder="45" value="45">
+                        </div>
+                        <div class="setting-item">
+                            <label>Prijs per m² (€)</label>
+                            <input type="number" placeholder="2.50" value="2.50">
+                        </div>
+                        <button class="btn btn-primary">Opslaan</button>
+                    </article>
+
+                    <article class="settings-card">
+                        <h3>Beschikbare Diensten</h3>
+                        <div class="service-list-admin">
+                            <div class="service-admin-item">
+                                <label>
+                                    <input type="checkbox" checked>
+                                    <span>Gras maaien</span>
+                                </label>
+                            </div>
+                            <div class="service-admin-item">
+                                <label>
+                                    <input type="checkbox" checked>
+                                    <span>Hagen trimmen</span>
+                                </label>
+                            </div>
+                            <div class="service-admin-item">
+                                <label>
+                                    <input type="checkbox" checked>
+                                    <span>Planten snoeien</span>
+                                </label>
+                            </div>
+                            <div class="service-admin-item">
+                                <label>
+                                    <input type="checkbox" checked>
+                                    <span>Onkruid bestrijding</span>
+                                </label>
+                            </div>
+                            <div class="service-admin-item">
+                                <label>
+                                    <input type="checkbox">
+                                    <span>Gras zaaien</span>
+                                </label>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary">Diensten Updaten</button>
+                    </article>
+
+                    <article class="settings-card">
+                        <h3>Bedrijfsgegevens</h3>
+                        <div class="setting-item">
+                            <label>Bedrijfsnaam</label>
+                            <input type="text" placeholder="Groen & Gewoon Doen" value="Groen & Gewoon Doen">
+                        </div>
+                        <div class="setting-item">
+                            <label>Email</label>
+                            <input type="email" placeholder="info@groengejd.nl">
+                        </div>
+                        <div class="setting-item">
+                            <label>Telefoonnummer</label>
+                            <input type="tel" placeholder="+31 (0)6 12345678">
+                        </div>
+                        <button class="btn btn-primary">Opslaan</button>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Groen & Gewoon Doen Admin Panel. Alle rechten voorbehouden.</p>
+        </div>
+    </footer>
+</body>
+</html>
