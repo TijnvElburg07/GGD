@@ -40,15 +40,9 @@
 
         <!-- Packages Section -->
         <section id="packages" class="packages">
-            <div class="container">
-                <h2>Onze Pakketten</h2>
-                <p class="section-subtitle">Kies een standaard pakket of laat een offerte aanvragen</p>
-                <div id="packages-grid" class="packages-grid">
-                    <!-- Packages will be loaded here by JavaScript -->
-                    <div class="package-placeholder">
-                        <p>Pakketten laden...</p>
-                    </div>
-                </div>
+            <h2>Pakketten</h2>
+            <div id="package-list">
+                <!-- Packages will be displayed here -->
             </div>
         </section>
 
@@ -66,11 +60,9 @@
                             <textarea id="description" name="description" placeholder="Beschrijf wat u graag in uw tuin gedaan wilt hebben..." rows="5"></textarea>
                         </div>
 
-                        <!-- Services Checkboxes -->
                         <div class="form-group">
                             <label>Diensten (selecteer een of meer)</label>
                             <div class="services-list" id="services-list">
-                                <!-- Services will be loaded here by JavaScript -->
                                 <div class="service-item">
                                     <input type="checkbox" id="service-placeholder" name="services" value="0" disabled>
                                     <label for="service-placeholder">Diensten laden...</label>
@@ -126,7 +118,7 @@
         </div>
     </footer>
 
-    <script src="js/script.js"></script>
+    <script src="js/script.client.js"></script>
     <script src="js/modal.js"></script>
 
     <div id="login-modal" class="modal">
