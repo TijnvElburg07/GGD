@@ -64,8 +64,36 @@ async function deletall(){
   console.log("All items deleted");
 }
 
+// Function to populate packages in dropdown and section
+function populatePackages() {
+    const packages = {
+        "1": {"name": "Example Package", "version": "1.0.0", "description": "This is an example package.", "price": 9.99},
+        "2": {"name": "Advanced Package", "version": "2.0.0", "description": "This is an advanced package with more features.", "price": 19.99}
+    };
+
+    const dropdown = document.getElementById('package-dropdown');
+    const packageList = document.getElementById('package-list');
+
+    for (const key in packages) {
+        const pkg = packages[key];
+
+        // Populate dropdown
+        const dropdownItem = document.createElement('a');
+        dropdownItem.textContent = pkg.name;
+        dropdownItem.href = '#'; // Add functionality as needed
+        dropdown.appendChild(dropdownItem);
+
+        // Populate package list
+        const packageItem = document.createElement('div');
+        packageItem.innerHTML = `<strong>${pkg.name}</strong> - ${pkg.description} (€${pkg.price})`;
+        packageList.appendChild(packageItem);
+    }
+}
+
+// Call the function to populate packages on page load
+window.onload = populatePackages;
+
 (async () => {
   const data = await readFileContent();
   console.log(data);
-  deletall()
 })();
