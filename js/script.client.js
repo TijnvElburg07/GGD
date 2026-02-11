@@ -21,7 +21,6 @@ function populatePackages(packages) {
   for (const id in packages) {
     const pkg = packages[id];
 
-    // Dropdown item (only if dropdown exists)
     if (dropdown) {
       const dropdownItem = document.createElement('a');
       dropdownItem.textContent = pkg.name;
@@ -30,13 +29,11 @@ function populatePackages(packages) {
       dropdown.appendChild(dropdownItem);
     }
 
-    // Package list entry
     const packageItem = document.createElement('div');
     packageItem.className = 'package-item';
     packageItem.innerHTML = `<strong>${escapeHtml(pkg.name)}</strong> - ${escapeHtml(pkg.description)} (€${Number(pkg.price).toFixed(2)})`;
     packageList.appendChild(packageItem);
 
-    // Service checkbox for the offer form
     const serviceItem = document.createElement('div');
     serviceItem.className = 'service-item';
 
