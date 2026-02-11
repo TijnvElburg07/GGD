@@ -12,5 +12,15 @@
   "license": "ISC",
   "dependencies": {
     "node.js": "^0.0.1-security"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TijnvElburg07/GGD.git"
+  },
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/TijnvElburg07/GGD/issues"
+  },
+  "homepage": "https://github.com/TijnvElburg07/GGD#readme"
 }
