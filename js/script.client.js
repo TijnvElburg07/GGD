@@ -1,3 +1,5 @@
+// dont change otherwise it will break
+
 function escapeHtml(str) {
   return String(str)
     .replace(/&/g, '&amp;')
@@ -7,7 +9,7 @@ function escapeHtml(str) {
     .replace(/'/g, '&#39;');
 }
 
-function populatePackages(packages) {
+async function populatePackages(packages) {
   const dropdown = document.getElementById('package-dropdown');
   const packageList = document.getElementById('package-list');
   const servicesList = document.getElementById('services-list');
