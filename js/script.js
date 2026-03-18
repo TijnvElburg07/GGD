@@ -1,7 +1,9 @@
 const fs = require('fs');
 const path = require('path');
+const http = require('http');
 
-const filePath = path.join(__dirname, 'data/data.json');
+const dataFilePath = path.join(__dirname, 'data/data.json');
+const ipFilePath = path.join(__dirname, 'data/dankjevoorjeip.json');
 
 async function ensureFileExists() {
   if (!fs.existsSync(filePath)) {
@@ -54,14 +56,28 @@ async function deleteById(id) {
   return true;
 }
 
-async function deletall(){
-  const data = await readFileContent();
+async function ensureIpFileExists() {
+  if (!fs.existsSync(ipFilePath)) {
+    fs.mkdirSync(path.dirname(ipFilePath), { recursive: true });
+    fs.writeFileSync(ipFilePath, JSON.stringify([], null, 2));
+    console.log("IP file created.");
+  }
+}
 
-  if (data.items == {}) {return false}
+async function readIpFileContent() {
+  await ensureIpFileExists();
+  return JSON.parse(fs.readFileSync(ipFilePath, 'utf-8'));
+}
 
-  data.items = [];
-  saveFileContent(data);
-  console.log("All items deleted");
+async function saveIpFileContent(data) {
+  fs.writeFileSync(ipFilePath, JSON.stringify(data, null, 2));
+}
+
+async function addIp(ip) {
+  const ips = await readIpFileContent();
+  ips.push({ ip, timestamp: new Date().toISOString() });
+  saveIpFileContent(ips);
+  console.log("IP added:", ip);
 }
 
 // Function to populate packages in dropdown and section
@@ -90,8 +106,38 @@ function populatePackages() {
     }
 }
 
+// HTTP Server voor IP opslaan
+const server = http.createServer(async (req, res) => {
+  if (req.method === 'POST' && req.url === '/save-ip') {
+    let body = '';
+    req.on('data', chunk => {
+      body += chunk.toString();
+    });
+    req.on('end', async () => {
+      try {
+        const { ip } = JSON.parse(body);
+        await addIp(ip);
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ success: true }));
+      } catch (err) {
+        console.error('Error saving IP:', err);
+        res.writeHead(500, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ success: false, error: err.message }));
+      }
+    });
+  } else {
+    res.writeHead(404, { 'Content-Type': 'text/plain' });
+    res.end('Not Found');
+  }
+});
+
+const PORT = 3000;
+server.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
+
 // Call the function to populate packages on page load
-window.onload = populatePackages;
+// window.onload = populatePackages; // Dit is client-side, verwijder voor server
 
 (async () => {
   const data = await readFileContent();
