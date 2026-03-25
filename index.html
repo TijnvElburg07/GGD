@@ -50,48 +50,76 @@
         <section id="offer" class="offer">
             <div class="container">
                 <h2>Offerte Aanvragen</h2>
-                <p class="section-subtitle">Beschrijf uw project en ontvang een gepersonaliseerde offerte</p>
                 
-                <div class="offer-container">
-                    <form id="offer-form" class="offer-form">
-                        <!-- Description -->
+                <form id="offer-form" class="offer-form">
+                    <!-- Work Description -->
+                    <div class="form-group">
+                        <label for="description">Wat wilt u graag laten doen?</label>
+                        <textarea id="description" name="description" placeholder="Beschrijf uw project..." rows="3"></textarea>
+                    </div>
+
+                    <!-- Services Section -->
+                    <div class="form-group">
+                        <label>Werkzaamheden</label>
+                        
                         <div class="form-group">
-                            <label for="description">Beschrijving van het werk</label>
-                            <textarea id="description" name="description" placeholder="Beschrijf wat u graag in uw tuin gedaan wilt hebben..." rows="5"></textarea>
+                            <label for="grass-m2">Gras (m²) - €15,00 per m²</label>
+                            <input type="number" id="grass-m2" name="grass-m2" min="0" step="0.5" value="0">
                         </div>
 
                         <div class="form-group">
-                            <label>Diensten (selecteer een of meer)</label>
-                            <div class="services-list" id="services-list">
-                                <div class="service-item">
-                                    <input type="checkbox" id="service-placeholder" name="services" value="0" disabled>
-                                    <label for="service-placeholder">Diensten laden...</label>
-                                </div>
-                            </div>
+                            <label for="tiles-m2">Tegels (m²) - €25,00 per m²</label>
+                            <input type="number" id="tiles-m2" name="tiles-m2" min="0" step="0.5" value="0">
                         </div>
 
-                        <!-- Garden Size -->
                         <div class="form-group">
-                            <label for="garden-size">Tuingrootte (m²)</label>
-                            <input type="number" id="garden-size" name="garden-size" min="1" placeholder="Voer tuingrootte in" value="">
+                            <label for="hedge-meters">Heg (meter) - €8,00 per meter</label>
+                            <input type="number" id="hedge-meters" name="hedge-meters" min="0" step="0.5" value="0">
                         </div>
+                    </div>
 
-                        <!-- Date -->
-                        <div class="form-group">
-                            <label for="work-date">Gewenste werkdatum</label>
-                            <input type="date" id="work-date" name="work-date" required>
+                    <!-- Optional Services -->
+                    <div class="form-group">
+                        <label>Extra diensten (optioneel)</label>
+                        <div class="checkbox-list">
+                            <div><input type="checkbox" id="option-weeding" name="options" value="weeding"><label for="option-weeding">Onkruid bestrijding (+€50)</label></div>
+                            <div><input type="checkbox" id="option-fertilizer" name="options" value="fertilizer"><label for="option-fertilizer">Bemesting (+€75)</label></div>
+                            <div><input type="checkbox" id="option-pruning" name="options" value="pruning"><label for="option-pruning">Snoeien (+€100)</label></div>
+                            <div><input type="checkbox" id="option-mulch" name="options" value="mulch"><label for="option-mulch">Mulch/Schors (+€60)</label></div>
+                            <div><input type="checkbox" id="option-consultation" name="options" value="consultation"><label for="option-consultation">Advies (+€45)</label></div>
                         </div>
+                    </div>
 
-                        <!-- Price Display -->
-                        <div class="price-display">
-                            <p>Geschatte prijs:</p>
-                            <p class="price-amount" id="estimated-price">€ 0,00</p>
-                        </div>
+                    <!-- Price Display -->
+                    <div class="price-box">
+                        <strong>Geschatte prijs:</strong>
+                        <div id="estimated-price" style="font-size: 24px; font-weight: bold; color: #27ae60;">€ 0,00</div>
+                    </div>
 
-                        <!-- Submit Button -->
-                        <button type="submit" class="btn btn-primary btn-full">Offerte Aanvragen</button>
-                    </form>
-                </div>
+                    <!-- Customer Info -->
+                    <div class="form-group">
+                        <label for="customer-name">Uw naam *</label>
+                        <input type="text" id="customer-name" name="customer-name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="customer-email">E-mailadres *</label>
+                        <input type="email" id="customer-email" name="customer-email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="customer-phone">Telefoonnummer</label>
+                        <input type="tel" id="customer-phone" name="customer-phone">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="work-date">Gewenste werkdatum *</label>
+                        <input type="date" id="work-date" name="work-date" required>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn btn-primary btn-full">Offerte Opslaan</button>
+                </form>
             </div>
         </section>
 
@@ -118,8 +146,11 @@
         </div>
     </footer>
 
+    <script src="js/script.js"></script>
     <script src="js/script.client.js"></script>
     <script src="js/modal.js"></script>
+    <script src="js/quote-calculator.js"></script>
+    <script src="js/orders-manager.js"></script>
 
     <div id="login-modal" class="modal">
         <div class="modal-content">

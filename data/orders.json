@@ -1,0 +1,26 @@
+{
+  "orders": [
+    {
+      "id": 1,
+      "timestamp": "2026-03-25T10:08:06.688Z",
+      "grassM2": 10,
+      "tilesM2": 5,
+      "hedgeMeters": 3,
+      "extraOptions": [
+        "weeding",
+        "fertilizer",
+        "pruning",
+        "mulch",
+        "consultation"
+      ],
+      "description": "tuinieren",
+      "workDate": "2026-04-28",
+      "customerName": "Ikkuh",
+      "customerEmail": "poepiekakka@gmail.com",
+      "customerPhone": "0612345678",
+      "quotedPrice": 629,
+      "status": "accepted"
+    }
+  ],
+  "lastId": 1
+}

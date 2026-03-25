@@ -1,0 +1,47 @@
+{
+  "grass": {
+    "name": "Gras onderhoud/aanleg",
+    "pricePerM2": 15,
+    "unit": "m²",
+    "description": "Prijs per vierkante meter gras"
+  },
+  "tiles": {
+    "name": "Tegels onderhoud/aanleg",
+    "pricePerM2": 25,
+    "unit": "m²",
+    "description": "Prijs per vierkante meter tegels"
+  },
+  "hedge": {
+    "name": "Heg onderhoud/aanleg",
+    "pricePerMeter": 8,
+    "unit": "meter",
+    "description": "Prijs per meter heg"
+  },
+  "extraOptions": {
+    "weeding": {
+      "name": "Onkruid bestrijding",
+      "price": 50,
+      "description": "Behandeling tegen onkruid"
+    },
+    "fertilizer": {
+      "name": "Mest/Bemesting",
+      "price": 75,
+      "description": "Professionele bemesting van het gazon"
+    },
+    "pruning": {
+      "name": "Snoeien",
+      "price": 100,
+      "description": "Snoeien van bomen en struiken"
+    },
+    "mulch": {
+      "name": "Mulch/Schors",
+      "price": 60,
+      "description": "Aanbrengen van mulch laag"
+    },
+    "consultation": {
+      "name": "Adviesbijeenkomst",
+      "price": 45,
+      "description": "Tuinontwerp en advies"
+    }
+  }
+}
