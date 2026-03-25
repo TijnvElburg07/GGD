@@ -3,14 +3,6 @@
         "name": "Admin User",
         "username": "administrator",
         "email": "adminuser@example.com",
-        "password": "adminpassword",
-        "role": "admin"
-    },
-    "user": {
-        "name": "Regular User",
-        "username": "regularuser",
-        "email": "regularuser@example.com",
-        "password": "userpassword",
-        "role": "user"
+        "password": "adminpassword"
     }
 }
