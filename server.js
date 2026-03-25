@@ -6,22 +6,18 @@ const bodyParser = require('body-parser');
 const app = express();
 const PORT = 3000;
 
-// Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname)));
 
-// Paths
 const dataDir = path.join(__dirname, 'data');
 const ordersFile = path.join(dataDir, 'orders.json');
 const ratesFile = path.join(dataDir, 'rates.json');
 
-// Ensure data directory exists
 if (!fs.existsSync(dataDir)) {
   fs.mkdirSync(dataDir, { recursive: true });
 }
 
-// Load rates from rates.json
 function loadRates() {
   try {
     const ratesData = fs.readFileSync(ratesFile, 'utf-8');
@@ -32,7 +28,6 @@ function loadRates() {
   }
 }
 
-// Calculate quote based on input data
 function calculateQuote(data) {
   const rates = loadRates();
   if (!rates) {
@@ -41,22 +36,18 @@ function calculateQuote(data) {
 
   let totalPrice = 0;
 
-  // Calculate grass
   if (data.grassM2 && data.grassM2 > 0) {
     totalPrice += data.grassM2 * rates.grass.pricePerM2;
   }
 
-  // Calculate tiles
   if (data.tilesM2 && data.tilesM2 > 0) {
     totalPrice += data.tilesM2 * rates.tiles.pricePerM2;
   }
 
-  // Calculate hedge
   if (data.hedgeMeters && data.hedgeMeters > 0) {
     totalPrice += data.hedgeMeters * rates.hedge.pricePerMeter;
   }
 
-  // Calculate extra options
   if (data.extraOptions && Array.isArray(data.extraOptions)) {
     data.extraOptions.forEach(optionKey => {
       if (rates.extraOptions[optionKey]) {
@@ -68,7 +59,6 @@ function calculateQuote(data) {
   return totalPrice;
 }
 
-// Initialize orders file if it doesn't exist
 function initializeOrdersFile() {
   if (!fs.existsSync(ordersFile)) {
     fs.writeFileSync(
@@ -78,7 +68,6 @@ function initializeOrdersFile() {
   }
 }
 
-// Read existing orders
 function readOrders() {
   initializeOrdersFile();
   try {
@@ -90,14 +79,10 @@ function readOrders() {
   }
 }
 
-// Save orders
 function saveOrders(data) {
   fs.writeFileSync(ordersFile, JSON.stringify(data, null, 2));
 }
 
-// API Routes
-
-// GET /api/rates - Get all rates
 app.get('/api/rates', (req, res) => {
   const rates = loadRates();
   if (rates) {
@@ -107,7 +92,6 @@ app.get('/api/rates', (req, res) => {
   }
 });
 
-// POST /api/calculate-quote - Calculate quote without saving
 app.post('/api/calculate-quote', (req, res) => {
   try {
     const quote = calculateQuote(req.body);
@@ -123,18 +107,14 @@ app.post('/api/calculate-quote', (req, res) => {
   }
 });
 
-// POST /orders - Save a new order
 app.post('/orders', (req, res) => {
   try {
     const orderData = req.body;
 
-    // Calculate quote for the order
     const quotePrice = calculateQuote(orderData);
 
-    // Read existing orders
     const ordersData = readOrders();
 
-    // Create new order
     const newOrder = {
       id: ++ordersData.lastId,
       timestamp: new Date().toISOString(),
@@ -151,10 +131,8 @@ app.post('/orders', (req, res) => {
       status: 'pending'
     };
 
-    // Add order to list
     ordersData.orders.push(newOrder);
 
-    // Save updated orders
     saveOrders(ordersData);
 
     console.log('Order saved:', newOrder);
@@ -173,7 +151,6 @@ app.post('/orders', (req, res) => {
   }
 });
 
-// GET /api/orders - Get all orders (admin view)
 app.get('/api/orders', (req, res) => {
   try {
     const ordersData = readOrders();
@@ -183,7 +160,6 @@ app.get('/api/orders', (req, res) => {
   }
 });
 
-// PATCH /api/orders/:id/status - Update order status
 app.patch('/api/orders/:id/status', (req, res) => {
   const orderId = parseInt(req.params.id, 10);
   const newStatus = req.body.status;
@@ -211,7 +187,6 @@ app.patch('/api/orders/:id/status', (req, res) => {
   }
 });
 
-// GET /api/stats - Basic order statistics for admin
 app.get('/api/stats', (req, res) => {
   try {
     const ordersData = readOrders();

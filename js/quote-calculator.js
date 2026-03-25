@@ -1,14 +1,11 @@
-// Formulier elementen
 const form = document.getElementById('offer-form');
 const priceDisplay = document.getElementById('estimated-price');
 
-// Input velden voor berekening
 const grassInput = document.getElementById('grass-m2');
 const tilesInput = document.getElementById('tiles-m2');
 const hedgeInput = document.getElementById('hedge-meters');
 const optionCheckboxes = document.querySelectorAll('input[name="options"]');
 
-// Hulpfuncties
 function formatPrice(price) {
   return new Intl.NumberFormat('nl-NL', {
     style: 'currency',
@@ -34,7 +31,6 @@ function displayPrice(price) {
   priceDisplay.textContent = formatPrice(price);
 }
 
-// Prijs berekenen door naar server te sturen
 async function calculateAndDisplayPrice() {
   const data = {
     ...getInputValues(),
@@ -56,7 +52,6 @@ async function calculateAndDisplayPrice() {
   }
 }
 
-// Offerte opslaan
 async function handleFormSubmit(e) {
   e.preventDefault();
 
@@ -93,12 +88,10 @@ async function handleFormSubmit(e) {
   }
 }
 
-// Event listeners
 grassInput.addEventListener('input', calculateAndDisplayPrice);
 tilesInput.addEventListener('input', calculateAndDisplayPrice);
 hedgeInput.addEventListener('input', calculateAndDisplayPrice);
 optionCheckboxes.forEach(cb => cb.addEventListener('change', calculateAndDisplayPrice));
 form.addEventListener('submit', handleFormSubmit);
 
-// Initiële berekening
 calculateAndDisplayPrice();
